@@ -1,0 +1,15 @@
+services:
+  consul:
+    image: hashicorp/consul:1.19
+    container_name: consul
+    command: ["consul","agent","-config-file=/consul/config/server.hcl"]
+    ports:
+      - "8500:8500"
+      - "8600:8600/udp"
+    volumes:
+      - ./config:/consul/config
+      - consul-data:/consul/data
+    restart: unless-stopped
+
+volumes:
+  consul-data:

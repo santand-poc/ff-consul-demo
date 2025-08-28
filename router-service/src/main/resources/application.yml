@@ -1,0 +1,26 @@
+server:
+  port: 8080
+
+ff:
+  consul:
+    enabled: true
+    url: http://localhost:8500
+    basePath: CLP/ff
+    env: prod
+    ttlSeconds: 30
+    useBlockingQueries: true
+    blockingWaitSeconds: 55
+    timeoutMs: 500
+
+# Adres providera; Feign użyje tej bazy + ścieżek /v1/data i /v2/data
+provider:
+  baseUrl: http://localhost:8081
+
+spring:
+  cloud:
+    openfeign:
+      compression:
+        request:
+          enabled: true
+        response:
+          enabled: true
